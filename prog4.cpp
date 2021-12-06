@@ -323,17 +323,19 @@ int main(int argc, char *argv[])
     {
         best_coordinates.push_back(  coordinates[ std::get<1>(best_line_errors[i]) ] );
     }
-    for (vector< Coordinate >::iterator it = best_coordinates.begin(); it != best_coordinates.end(); it++)
-    {
-        it->printWithId();
-    }
-    best_line.printEquation();
+    //for (vector< Coordinate >::iterator it = best_coordinates.begin(); it != best_coordinates.end(); it++)
+    //{
+    //    it->printWithId();
+    //}
+    //best_line.printEquation();
     
     //perform line of best fit
     Line lbf = best_fit( best_coordinates );
     
-    float m = lbf.slope;
-    float y_int = lbf.y_intercept;
+    float m = (float)lbf.slope;
+    float y_int = (float)lbf.y_intercept;
+
+    cout << m << " " << y_int <<;
     
     auto end = high_resolution_clock::now();
     auto total_runtime = duration_cast<microseconds>(end - start);

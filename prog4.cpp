@@ -301,7 +301,7 @@ int main(int argc, char *argv[])
     //Probability of not including a sample with no outliers, out of 16 samples,
     //   is (0.51)^20 = 0.00000141710986708
     //Also need to account samples that are not outliers but are at a steep angle compared to the lbf
-    int i_max = (int)( 10 * ln(10) );
+    int i_max = (int)( 10 * log(10) );
     for(int i = 0; i < i_max; i++)
     {
         random_1 = generator() % num_points;

@@ -338,7 +338,8 @@ int main(int argc, char *argv[])
     vector< Coordinate > best_coordinates;
     //randomly get a line from this set again, and choose the smallest error
     
-    for(int i = 0; i < middle; i++)
+    //for(int i = 0; i < middle; i++)
+    for(int i = 0; i <= middle; i++)
     {
         best_coordinates.push_back(  coordinates[ std::get<1>(best_line_errors[i]) ] );
     }

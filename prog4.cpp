@@ -224,9 +224,9 @@ Line best_fit( vector< Coordinate > coordinates )
 int main(int argc, char *argv[])
 {    
 
-    if (argc > 4)
+    if (argc > 2)
     {
-        std::cerr << "Usage: " << argv[0] << "< input.txt" << std::endl;
+        std::cerr << "Usage: " << argv[0] << " < input.txt" << std::endl;
         return 1;
     }
     //obtain the coordinates of all points as a pair

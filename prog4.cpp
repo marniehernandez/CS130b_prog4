@@ -221,8 +221,14 @@ Line best_fit( vector< Coordinate > coordinates )
 
 
 
-int main()
+int main(int argc, char *argv[])
 {    
+
+    if (argc > 4)
+    {
+        std::cerr << "Usage: " << argv[0] << "< input.txt" << std::endl;
+        return 1;
+    }
     //obtain the coordinates of all points as a pair
     auto start = high_resolution_clock::now();
     

@@ -208,7 +208,7 @@ Line best_fit( vector< Coordinate > coordinates )
                     N
     */
     bool empty = true;
-    int n = 0
+    int n = 0;
     double sum_x = 0;
     double sum_y = 0;
     double sum_xy = 0;
@@ -229,7 +229,7 @@ Line best_fit( vector< Coordinate > coordinates )
     double m_denominator = ((double)n * sum_x_squared) - (sum_x * sum_x);
     double m = m_numerator / m_denominator;
 
-    double intercept_numerator = (sum_y - (m * sum_x);
+    double intercept_numerator = sum_y - (m * sum_x);
     double intercept = intercept_numerator / n;
 
     Line l(m, intercept, coordinates[0]);

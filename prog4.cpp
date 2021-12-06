@@ -354,7 +354,8 @@ int main(int argc, char *argv[])
     float m = (float)lbf.slope;
     float y_int = (float)lbf.y_intercept;
 
-    cout << m << " " << y_int;
+    //cout << m << " " << y_int;
+    printf("%.4f %.4f", m, y_int)
     
     auto end = high_resolution_clock::now();
     auto total_runtime = duration_cast<microseconds>(end - start);

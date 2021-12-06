@@ -197,22 +197,41 @@ std::tuple<double, double> mean( vector< Coordinate > coordinates )
 
 Line best_fit( vector< Coordinate > coordinates )
 {
+    //from https://www.mathsisfun.com/data/least-squares-regression.html
+    /*
+           N*SUM(xy) - SUM(x)SUM(y)
+      m = --------------------------
+             N*SUM(x^2) - SUM(x)^2
+
+           SUM(y) - m*SUM(x)
+      b = -------------------
+                    N
+    */
     bool empty = true;
-    double numerator = 0;
-    double denominator = 0;
+    int n = 0
+    double sum_x = 0;
+    double sum_y = 0;
+    double sum_xy = 0;
+    double sum_x_squared = 0;
     
-    //std::get<0>(means) is x mean
-    //std::get<1>(means) is y mean
     std::tuple<double, double> means = mean( coordinates );
     
     for (vector< Coordinate >::iterator it = coordinates.begin(); it != coordinates.end(); it++)
     {
-        numerator += ( it->x - std::get<0>(means)) * ( it->y - std::get<1>(means));
-        denominator += ( it->x - std::get<0>(means)) * ( it->x - std::get<0>(means));
+        sum_x += it->x;
+        sum_y += it->y;
+        sum_xy += (it->x)*(it->y);
+        sum_x_squared += (it->x)*(it->x);
+        n++;
         empty = false;
     }
-    double m = numerator/denominator;
-    double intercept = std::get<0>(means) - ( m * (std::get<1>(means)) );
+    double m_numerator = ((double)n * sum_xy) - (sum_x * sum_y);
+    double m_denominator = ((double)n * sum_x_squared) - (sum_x * sum_x);
+    double m = m_numerator / m_denominator;
+
+    double intercept_numerator = (sum_y - (m * sum_x);
+    double intercept = intercept_numerator / n;
+
     Line l(m, intercept, coordinates[0]);
     return l;
 }
